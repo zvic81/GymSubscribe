@@ -17,6 +17,9 @@ public class SubscribeController {
     final SubscribeService subscribeService;
     final ClientService clientService;
 
+    @GetMapping({"/", "/index", ""})
+    public String index(){ return "index"; }
+
     @GetMapping("allsubcribes")
     public String getSubscribes(Model model){
         List<Subscribe> subscribes = subscribeService.findAllSubscribe();

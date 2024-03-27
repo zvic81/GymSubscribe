@@ -43,6 +43,15 @@
     </style>
 </head>
 <body>
+<nav>
+    <ul>
+        <li><a href="/api/v1/subscribes/index">ДОМОЙ</a></li>
+        <!-- Замените "/" на путь к вашей главной странице -->
+        <li><a href="/api/v1/subscribes/allsubcribes">Подписки</a></li>
+        <!-- Пример ссылки на другую страницу вашего сайта -->
+        <li><a href="/api/v1/subscribes/allclients">Клиенты</a></li>
+    </ul>
+</nav>
 <h1>Добавление подписки</h1>
 <div class="input-container">
     <form action="#" th:action="@{/api/v1/subscribes/add_subscribe}" method="post">
