@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление подписки</title>
+    <style>
+        .input-container {
+            margin-bottom: 10px;
+            display: flex; /* Установка родительского контейнера как flex-контейнера */
+        }
+
+        .input-container input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            margin-right: 10px; /* Добавляем отступ справа для разделения полей */
+        }
+
+        .input-container input[type="submit"] {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Список подписок</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Добавление подписки</h1>
+<div class="input-container">
+    <form action="#" th:action="@{/api/v1/subscribes/add_subscribe}" method="post">
+        <input type="text" name="startDate" placeholder="Дата начала (гггг-мм-дд)">
+        <input type="text" name="endDate" placeholder="Дата окончания (гггг-мм-дд)">
+        <input type="text" name="price" placeholder="Цена">
+        <input type="text" name="clientId" placeholder="ID клиента">
+        <input type="submit" value="Добавить">
+    </form>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Дата начала</th>
+        <th>Дата окончания</th>
+        <th>Цена</th>
+        <th>Имя клиента</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="subscribe : ${subscribes}">
+        <td th:text="${subscribe.id}"></td>
+        <td th:text="${subscribe.startDate}"></td>
+        <td th:text="${subscribe.endDate}"></td>
+        <td th:text="${subscribe.price}"></td>
+        <td th:text="${subscribe.client.firstName + ' ' + subscribe.client.secondName}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
