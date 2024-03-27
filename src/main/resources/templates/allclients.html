@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Управление подписками</title>
+    <title>Управление клиентами</title>
     <style>
         .input-container {
             margin-bottom: 10px;
@@ -24,7 +24,7 @@
             cursor: pointer;
         }
     </style>
-    <title>Список подписок</title>
+    <title>Список клиентов</title>
     <style>
         table {
             border-collapse: collapse;
@@ -43,35 +43,33 @@
     </style>
 </head>
 <body>
-<h1>Добавление подписки</h1>
+<h1>Добавление клиента</h1>
 <div class="input-container">
-    <form action="#" th:action="@{/api/v1/subscribes/add_subscribe}" method="post">
-        <input type="text" name="startDate" placeholder="Дата начала (гггг-мм-дд)">
-        <input type="text" name="endDate" placeholder="Дата окончания (гггг-мм-дд)">
-        <input type="text" name="price" placeholder="Цена">
-        <input type="text" name="clientId" placeholder="ID клиента">
+    <form action="#" th:action="@{/api/v1/subscribes/add_client}" method="post">
+        <input type="text" name="firstName" placeholder="Имя">
+        <input type="text" name="secondName" placeholder="Фамилия">
+        <input type="text" name="dateOfBirth" placeholder="Дата рождения">
         <input type="submit" value="Добавить">
     </form>
 </div>
 
+<h2>Текущие клиенты</h2>
 <table>
-    <h2>Текущие подписки</h2>
     <thead>
     <tr>
         <th>ID</th>
-        <th>Дата начала</th>
-        <th>Дата окончания</th>
-        <th>Цена</th>
-        <th>Имя клиента</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Дата рождения</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="subscribe : ${subscribes}">
-        <td th:text="${subscribe.id}"></td>
-        <td th:text="${subscribe.startDate}"></td>
-        <td th:text="${subscribe.endDate}"></td>
-        <td th:text="${subscribe.price}"></td>
-        <td th:text="${subscribe.client.firstName + ' ' + subscribe.client.secondName}"></td>
+    <tr th:each="client : ${clients}">
+        <td th:text="${client.id}"></td>
+        <td th:text="${client.firstName}"></td>
+        <td th:text="${client.secondName}"></td>
+        <td th:text="${client.dateOfBirth}"></td>
+
     </tr>
     </tbody>
 </table>

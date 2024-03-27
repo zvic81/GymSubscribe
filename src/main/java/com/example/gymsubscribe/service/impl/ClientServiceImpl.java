@@ -12,7 +12,7 @@ import java.util.List;
 public class ClientServiceImpl implements ClientService {
     private final ClientRepo clientRepo;
     @Override
-    public List<Client> findAll() {
+    public List<Client> findAllClients() {
         return clientRepo.findAll();
     }
 

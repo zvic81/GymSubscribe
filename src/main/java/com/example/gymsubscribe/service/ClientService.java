@@ -3,7 +3,7 @@ import java.util.List;
 import com.example.gymsubscribe.model.Client;
 
 public interface ClientService {
-    List<Client> findAll();
+    List<Client> findAllClients();
     Client saveClient(Client client);
     Client updateClient(Client client);
 
