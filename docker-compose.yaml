@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:13
+    command: postgres
+    environment:
+      POSTGRES_USER: "zvic"
+      POSTGRES_PASSWORD: "zvic"
+    ports:
+      - "5433:5432"
