@@ -9,20 +9,28 @@ Features
    
 Technologies Used
 
-    Spring Boot: Java-based framework for creating standalone, production-grade Spring-based applications.
-    PostgreSQL: Open-source relational database management system known for its reliability and robust features.
-    Docker compose
+    * Spring Boot: Java-based framework for creating standalone, production-grade Spring-based applications.
+    * PostgreSQL: Open-source relational database management system known for its reliability and robust features.
+    * Docker compose
 
 Usage
 
 To run the GymSubscribe application locally, follow these steps:
-    1. '''git clone git@github.com:zvic81/GymSubscribe.git'''
+
+    1. git clone git@github.com:zvic81/GymSubscribe.git
+    
     2. Enter root apps dir GymSubscribe
+    
     3. Run in bash: 
-        '''docker-compose up -d'''
+    
+        docker-compose up -d
+        
     4. Open url http://127.0.0.1:8080/
+    
 
 How to build (NOT FOR USER!, developers only):
+
+
     pom.xml:
         <packaging>war</packaging>
         .............
