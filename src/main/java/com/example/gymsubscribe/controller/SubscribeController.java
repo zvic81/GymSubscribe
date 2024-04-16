@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,14 +15,31 @@ import com.example.gymsubscribe.model.*;
 import com.example.gymsubscribe.service.*;
 
 @Controller
-@RequestMapping("/api/v1/subscribes")
+//@RequestMapping("/api/v1/subscribes")
 @RequiredArgsConstructor
 public class SubscribeController {
     final SubscribeService subscribeService;
     final ClientService clientService;
 
     @GetMapping({"/", "/index", ""})
-    public String index(){ return "index"; }
+    public String index(Model model){
+        String userName = "Guest";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof DefaultOAuth2User) {
+                DefaultOAuth2User oauth2User = (DefaultOAuth2User) principal;
+                userName = oauth2User.getAttribute("name");
+                String email = oauth2User.getAttribute("email");
+                System.out.println("Имя: " + userName);
+                System.out.println("Email: " + email);
+            } else {
+                System.out.println("Тип principal не является ожидаемым типом DefaultOAuth2User");
+            }
+        }
+        model.addAttribute("username",userName);
+        return "index";
+    }
 
     @GetMapping("allsubcribes")
     public String getSubscribes(Model model){
@@ -46,7 +67,7 @@ public class SubscribeController {
         Client client = clientService.findById(clientId);
         subscribe.setClient(client);
         subscribeService.saveSubscribe(subscribe);
-        return "redirect:/api/v1/subscribes/allsubcribes";
+        return "redirect:/allsubcribes";
     }
 
     @PostMapping("/add_client")
@@ -58,7 +79,14 @@ public class SubscribeController {
         client.setSecondName(secondName);
         client.setDateOfBirth(LocalDate.parse(dateOfBirth));
         clientService.saveClient(client);
-        return "redirect:/api/v1/subscribes/allclients";
+        return "redirect:/allclients";
     }
+    @GetMapping("/login/oauth2/code/google")
+    public String googleLoginCallback(OAuth2AuthenticationToken authenticationToken) {
+        // Вывод информации об аутентификации для отладки
+        System.out.println("Authentication: " + authenticationToken);
+        System.out.println("Principal: " + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 
+        return "redirect:/index"; // Перенаправление на защищенную страницу после успешной аутентификации
+    }
 }//class SubscribeController
