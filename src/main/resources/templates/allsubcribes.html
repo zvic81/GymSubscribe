@@ -58,13 +58,21 @@
         <input type="text" name="startDate" placeholder="Дата начала (гггг-мм-дд)">
         <input type="text" name="endDate" placeholder="Дата окончания (гггг-мм-дд)">
         <input type="text" name="price" placeholder="Цена">
-        <input type="text" name="clientId" placeholder="ID клиента">
+<!--        <input type="text" name="clientId" placeholder="ID клиента">-->
+        <!-- Выпадающий список для выбора клиента -->
+        <select name="clientId">
+            <option th:each="client : ${clients}"
+                    th:value="${client.id}"
+                    th:text="${client.secondName + ' ' + client.firstName}"></option>
+        </select>
+
         <input type="submit" value="Добавить">
     </form>
 </div>
 
 <table>
     <h2>Текущие подписки</h2>
+    <h3> ТУТ ТИПА ДОБАВЛЕН ВЫПАДАЮЩИЙ СПИСОК КЛИЕНТОВ</h3>
     <thead>
     <tr>
         <th>ID</th>

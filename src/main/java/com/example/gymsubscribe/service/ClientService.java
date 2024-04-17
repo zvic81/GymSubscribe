@@ -8,4 +8,6 @@ public interface ClientService {
     Client updateClient(Client client);
 
     Client findById(Long clientID);
+
+    List<Client> getAllClients();
 }

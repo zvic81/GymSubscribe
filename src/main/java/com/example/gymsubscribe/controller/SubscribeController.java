@@ -44,6 +44,7 @@ public class SubscribeController {
     @GetMapping("allsubcribes")
     public String getSubscribes(Model model){
         List<Subscribe> subscribes = subscribeService.findAllSubscribe();
+        model.addAttribute("clients", clientService.getAllClients());
         model.addAttribute("subscribes", subscribes);
         return "allsubcribes";
     }
