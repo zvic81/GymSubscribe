@@ -15,6 +15,7 @@ import java.time.LocalDate;
 public class TestDataLoader implements CommandLineRunner {
     private final SubscribeRepo subscribeRepo;
     private final ClientRepo clientRepo;
+
     @Override
     public void run(String... args) throws Exception {
         if (clientRepo.findAll().isEmpty()) {
