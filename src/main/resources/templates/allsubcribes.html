@@ -42,6 +42,20 @@
         }
     </style>
 
+    <script type="text/javascript">
+        function validateForm() {
+            var startDate = document.forms["subscriptionForm"]["startDate"].value;
+            var endDate = document.forms["subscriptionForm"]["endDate"].value;
+            var price = document.forms["subscriptionForm"]["price"].value;
+
+            if (startDate.trim() === "" || endDate.trim() === "" || price.trim() === "") {
+                alert("Пожалуйста, заполните все обязательные поля (Дата начала, Дата окончания, Цена)");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
 </head>
 <body>
 <nav>
@@ -55,15 +69,16 @@
 </nav>
 <h1>Добавление подписки</h1>
 <div class="input-container">
-    <form name="subscriptionForm" action="#" th:action="@{/add_subscribe}" method="post">
-    <input type="text" name="startDate" placeholder="Дата начала (гггг-мм-дд)">
-        <input type="text" name="endDate" placeholder="Дата окончания (гггг-мм-дд)">
-        <input type="text" name="price" placeholder="Цена">
+    <form action="#" method="post" name="subscriptionForm" onsubmit="return validateForm()"
+          th:action="@{/add_subscribe}">
+        <input name="startDate" placeholder="Дата начала (гггг-мм-дд)" type="text">
+        <input name="endDate" placeholder="Дата окончания (гггг-мм-дд)" type="text">
+        <input name="price" placeholder="Цена" type="text">
         <!-- Выпадающий список для выбора клиента -->
         <select name="clientId">
             <option th:each="client : ${clients}"
-                    th:value="${client.id}"
-                    th:text="${client.secondName + ' ' + client.firstName}"></option>
+                    th:text="${client.secondName + ' ' + client.firstName}"
+                    th:value="${client.id}"></option>
         </select>
         <input type="submit" value="Добавить">
     </form>
