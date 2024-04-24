@@ -7,10 +7,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class ClientServiceImpl implements ClientService {
     private final ClientRepo clientRepo;
+
     @Override
     public List<Client> findAllClients() {
         return clientRepo.findAll();
@@ -27,5 +29,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client findById(Long clientID) { return clientRepo.findById(clientID).orElse(null); }
+    public Client findById(Long clientID) {
+        return clientRepo.findById(clientID).orElse(null);
+    }
 }

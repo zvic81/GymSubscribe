@@ -22,35 +22,10 @@ To run the GymSubscribe application locally, follow these steps:
     2. Enter root apps dir GymSubscribe
     
     3. Run in bash: 
-    
+
+        mvn clean package
         docker-compose up -d
         
     4. Open url http://127.0.0.1:8080/
-    
 
-How to build (NOT FOR USER!, developers only):
-
-
-    pom.xml:
-        <packaging>war</packaging>
-        .............
-        <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        </plugin>
-    mvn clean package
-
-
-
-Getting Started
-
-To get started with GymSubscribe, follow the instructions provided in the Installation Guide.
-Contributing
-
-Contributions are welcome! Feel free to fork the repository and submit pull requests for any enhancements or bug fixes.
-License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-Contact
-
-For any inquiries or feedback, please contact us at zvic@list.ru.
+For any inquiries or feedback, please contact at zvic@list.ru.

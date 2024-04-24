@@ -45,16 +45,16 @@
 <body>
 <nav>
     <ul>
-        <li><a href="/api/v1/subscribes/index">ДОМОЙ</a></li>
+        <li><a href="/index">ДОМОЙ</a></li>
         <!-- Замените "/" на путь к вашей главной странице -->
-        <li><a href="/api/v1/subscribes/allsubcribes">Подписки</a></li>
+        <li><a href="/allsubcribes">Подписки</a></li>
         <!-- Пример ссылки на другую страницу вашего сайта -->
-        <li><a href="/api/v1/subscribes/allclients">Клиенты</a></li>
+        <li><a href="/allclients">Клиенты</a></li>
     </ul>
 </nav>
 <h1>Добавление подписки</h1>
 <div class="input-container">
-    <form action="#" th:action="@{/api/v1/subscribes/add_subscribe}" method="post">
+    <form action="#" th:action="@{/subscription}" method="post">
         <input type="text" name="startDate" placeholder="Дата начала (гггг-мм-дд)">
         <input type="text" name="endDate" placeholder="Дата окончания (гггг-мм-дд)">
         <input type="text" name="price" placeholder="Цена">
