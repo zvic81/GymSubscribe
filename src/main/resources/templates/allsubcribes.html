@@ -41,6 +41,7 @@
             background-color: #f2f2f2;
         }
     </style>
+    <script src="/js/formValidation.js"></script>
 </head>
 <body>
 <nav>
@@ -54,17 +55,24 @@
 </nav>
 <h1>Добавление подписки</h1>
 <div class="input-container">
-    <form action="#" th:action="@{/subscription}" method="post">
-        <input type="text" name="startDate" placeholder="Дата начала (гггг-мм-дд)">
-        <input type="text" name="endDate" placeholder="Дата окончания (гггг-мм-дд)">
-        <input type="text" name="price" placeholder="Цена">
-        <input type="text" name="clientId" placeholder="ID клиента">
+    <form action="#" method="post" name="subscriptionForm" onsubmit="return validateForm('subscriptionForm', ['startDate', 'endDate', 'price'])"
+          th:action="@{/add_subscribe}">
+        <input type="date" name="startDate" placeholder="Дата начала (гггг-мм-дд)">
+        <input type="date" name="endDate" placeholder="Дата окончания (гггг-мм-дд)">
+        <input name="price" placeholder="Цена" type="text">
+        <!-- Выпадающий список для выбора клиента -->
+        <select name="clientId">
+            <option th:each="client : ${clients}"
+                    th:text="${client.secondName + ' ' + client.firstName}"
+                    th:value="${client.id}"></option>
+        </select>
         <input type="submit" value="Добавить">
     </form>
 </div>
 
 <table>
     <h2>Текущие подписки</h2>
+    <h3> ТУТ ТИПА ДОБАВЛЕН ВЫПАДАЮЩИЙ СПИСОК КЛИЕНТОВ</h3>
     <thead>
     <tr>
         <th>ID</th>

@@ -45,6 +45,7 @@ public class SubscribeController {
     @GetMapping("allsubcribes")
     public String getSubscribes(Model model) {
         List<Subscribe> subscribes = subscribeService.findAllSubscribe();
+        model.addAttribute("clients", clientService.getAllClients());
         model.addAttribute("subscribes", subscribes);
         return "allsubcribes";
     }
@@ -61,6 +62,11 @@ public class SubscribeController {
                                @RequestParam String endDate,
                                @RequestParam Double price,
                                @RequestParam Long clientId) {
+        if (startDate.isEmpty() || endDate.isEmpty() || price<=0) {
+            System.out.println("ERROR - empty fields in addSubscribe");
+            return "redirect:/allsubcribes";
+        }
+
         Subscribe subscribe = new Subscribe();
         subscribe.setStartDate(LocalDate.parse(startDate));
         subscribe.setEndDate(LocalDate.parse(endDate));
