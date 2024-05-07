@@ -14,7 +14,6 @@ public class WebSecurityConfig {
                         .requestMatchers("/", "/index").permitAll()
                         .anyRequest().authenticated()
                 ).httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults())
                 .oauth2Login(Customizer.withDefaults()
                 );
 
