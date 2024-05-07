@@ -20,8 +20,15 @@ To run the GymSubscribe application locally, follow these steps:
     1. git clone git@github.com:zvic81/GymSubscribe.git
     
     2. Enter root apps dir GymSubscribe
+
+    3. Create secrets.env in root dir apps, example: 
+            GOOGLE_CLIENT_ID=********jsvorn.apps.googleusercontent.com
+            GOOGLE_CLIENT_SECRET=GOCS*********w
     
-    3. Run in bash: 
+    4. Install plugin for Idea "EnvFile", then Run->Edit Config->Enable EnvFile->On all switches
+        ->Add file secrets.env
+    
+    5. Run in bash: 
 
         mvn clean package
         docker-compose up -d

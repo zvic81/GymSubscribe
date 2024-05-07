@@ -56,7 +56,7 @@
 <h1>Добавление подписки</h1>
 <div class="input-container">
     <form action="#" method="post" name="subscriptionForm" onsubmit="return validateForm('subscriptionForm', ['startDate', 'endDate', 'price'])"
-          th:action="@{/add_subscribe}">
+          th:action="@{/subscription}">
         <input type="date" name="startDate" placeholder="Дата начала (гггг-мм-дд)">
         <input type="date" name="endDate" placeholder="Дата окончания (гггг-мм-дд)">
         <input name="price" placeholder="Цена" type="text">

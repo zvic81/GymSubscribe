@@ -25,6 +25,8 @@ public class SubscribeController {
 
     @GetMapping({"/", "/index", ""})
     public String index(Model model) {
+        System.out.println(System.getenv("GOOGLE_CLIENT_ID"));
+        System.out.println(System.getenv("GOOGLE_CLIENT_SECRET"));
         String userName = "Guest";
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {

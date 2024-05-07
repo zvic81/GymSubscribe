@@ -55,7 +55,7 @@
 </nav>
 <h1>Добавление клиента</h1>
 <div class="input-container">
-    <form action="#" th:action="@{/add_client}" method="post" name="clientsForm" onsubmit="return validateForm('clientsForm', ['firstName', 'secondName', 'dateOfBirth'])">
+    <form action="#" th:action="@{/client}" method="post" name="clientsForm" onsubmit="return validateForm('clientsForm', ['firstName', 'secondName', 'dateOfBirth'])">
         <input type="text" name="firstName" placeholder="Имя">
         <input type="text" name="secondName" placeholder="Фамилия">
         <input type="date" name="dateOfBirth" placeholder="Дата рождения">
